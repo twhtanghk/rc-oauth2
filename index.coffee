@@ -29,11 +29,10 @@ class Auth extends React.Component
       E 'iframe', 
         src: @url()
         frameBorder: 0
-        height: '100%'
-        width: '100%'
         style:
           height: '100%'
           width: '100%'
           position: 'absolute'
+          borderRadius: '6px'
 
 module.exports = Auth

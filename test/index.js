@@ -55,12 +55,11 @@ Auth = (function(superClass) {
     return React.createElement(Dialog, this.props, E('iframe', {
       src: this.url(),
       frameBorder: 0,
-      height: '100%',
-      width: '100%',
       style: {
         height: '100%',
         width: '100%',
-        position: 'absolute'
+        position: 'absolute',
+        borderRadius: '6px'
       }
     }));
   };
