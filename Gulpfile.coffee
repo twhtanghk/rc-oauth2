@@ -9,6 +9,7 @@ concat = require 'gulp-concat'
 assert = require 'assert'
 fs = require 'fs'
 util = require 'util'
+path = require 'path'
 _ = require 'lodash'
 
 gulp.task 'default', ['coffee']
@@ -30,11 +31,16 @@ gulp.task 'css', ->
     .pipe gulp.dest '.'
 
 gulp.task 'coffee', ['config', 'css'],  ->
-  browserify entries: ['test/index.coffee']
-    .transform 'coffeeify'
-    .bundle()
-    .pipe source 'index.js'
-    .pipe gulp.dest 'test'
-    .pipe streamify uglify()
-    .pipe rename extname: '.min.js'
-    .pipe gulp.dest 'test'
+  [
+    'test/index.coffee'
+    'test/callback.coffee'
+  ].map (file) ->
+    name = path.parse(file).name
+    browserify entries: [file]
+      .transform 'coffeeify'
+      .bundle()
+      .pipe source "#{name}.js"
+      .pipe gulp.dest 'test'
+      .pipe streamify uglify()
+      .pipe rename extname: '.min.js'
+      .pipe gulp.dest 'test'
