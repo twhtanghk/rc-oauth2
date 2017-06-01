@@ -14,6 +14,7 @@ E Auth { AUTHURL: auth_url, CLIENT_ID: client_id, SCOPE: 'User' }
 ```
 
 ## API
+```
 props:
   visible: flag to show or hide oauth2 dialog (default: false)
   token: authorization token (default: null)
@@ -21,6 +22,7 @@ props:
   loginReject: action creator to trigger action with type: 'loginReject', error: error_message
   loginResolve: action creator to trigger action with type: 'loginResolve', token: token
   logout: action creator to trigger action with type: 'logout'
+```
 
 ## Example
 [Demo](https://rawgit.com/twhtanghk/rc-oauth2/master/test/index.html)
