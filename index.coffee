@@ -26,7 +26,8 @@ class Auth extends React.Component
 
   render: =>
     props = Object.assign {}, @props,
-      onClose: @props.loginReject
+      onClose: =>
+        @props.loginReject 'Cancelled by user'
     E Dialog, props,
       E 'iframe', 
         key: Date.now().toString()

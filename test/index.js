@@ -57,7 +57,11 @@ Auth = (function(superClass) {
   Auth.prototype.render = function() {
     var props;
     props = Object.assign({}, this.props, {
-      onClose: this.props.loginReject
+      onClose: (function(_this) {
+        return function() {
+          return _this.props.loginReject('Cancelled by user');
+        };
+      })(this)
     });
     return E(Dialog, props, E('iframe', {
       key: Date.now().toString(),
