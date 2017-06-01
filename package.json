@@ -27,11 +27,16 @@
     "gulp-streamify": "^1.0.2",
     "gulp-uglify": "^3.0.0",
     "http-server": "^0.10.0",
+    "react-redux": "^5.0.5",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "query-string": "^4.3.4",
     "rc-dialog": "^6.5.9",
     "react": "^15.5.4",
+    "react-addons-update": "^15.5.2",
     "react-dom": "^15.5.4",
     "react-script": "^2.0.5"
   }
