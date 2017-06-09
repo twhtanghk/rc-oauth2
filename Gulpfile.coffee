@@ -1,4 +1,5 @@
 gulp = require 'gulp'
+coffee = require 'gulp-coffee'
 browserify = require 'browserify'
 source = require 'vinyl-source-stream'
 rename = require 'gulp-rename'
@@ -31,6 +32,10 @@ gulp.task 'css', ->
     .pipe gulp.dest '.'
 
 gulp.task 'coffee', ['config', 'css'],  ->
+  gulp.src 'index.coffee'
+    .pipe coffee bare: true
+    .pipe gulp.dest './'
+
   [
     'test/index.coffee'
     'test/callback.coffee'

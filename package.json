@@ -1,6 +1,6 @@
 {
   "name": "rc-oauth2",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React OAuth2 Component",
   "main": "index.js",
   "scripts": {
@@ -32,6 +32,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "gulp-coffee": "^2.3.4",
     "query-string": "^4.3.4",
     "rc-dialog": "^6.5.9",
     "react": "^15.5.4",
