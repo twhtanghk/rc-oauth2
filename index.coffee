@@ -3,7 +3,6 @@ React = require 'react'
 E = require 'react-script'
 Dialog = require 'rc-dialog'
 url = require 'url'
-queryString = require 'query-string'
 
 class Auth extends React.Component
   @cb: null
@@ -27,7 +26,7 @@ class Auth extends React.Component
   render: =>
     props = Object.assign {}, @props,
       onClose: =>
-        @props.loginReject 'Cancelled by user'
+        @props.loginReject 'access_denied'
     E Dialog, props,
       E 'iframe', 
         key: Date.now().toString()
@@ -54,4 +53,44 @@ class Auth extends React.Component
     else if 'access_token' of auth
       @props.loginResolve auth.access_token
 
-module.exports = Auth
+initState =
+  visible: false
+  token: null
+  error: null
+
+reducer = (state, action) ->
+  switch action.type
+    when 'login'
+      visible: true
+      token: null
+      error: null
+    when 'loginReject'
+      visible: false
+      token: null
+      error: action.error
+    when 'loginResolve'
+      visible: false
+      token: action.token
+      error: null
+    when 'logout'
+      visible: false
+      token: null
+      error: null
+    else
+      state || initState
+      
+actionCreator = (dispatch) ->
+  login: ->
+    dispatch type: 'login'
+  loginReject: (err) ->
+    dispatch type: 'loginReject', error: err
+  loginResolve: (token) ->
+    dispatch type: 'loginResolve', token: token
+  logout: ->
+    dispatch type: 'logout'
+
+module.exports = 
+  component: Auth
+  state: initState
+  reducer: reducer
+  actionCreator: actionCreator
