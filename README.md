@@ -26,7 +26,7 @@ props:
 
 {component, state, reducer, actionCreator} = require 'rc-oauth2'
 createStore reducer, state
-Auth = connect((state) -> state, actionCreator)(component
+Auth = connect((state) -> state, actionCreator)(component)
 E Auth,
   AUTHURL: 'authorization url'
   CLIENT_ID: 'client_id'
