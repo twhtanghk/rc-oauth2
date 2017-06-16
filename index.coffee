@@ -1,7 +1,8 @@
-require './css'
+require 'rc-dialog/assets/index.css'
+require './index.css'
 React = require 'react'
 E = require 'react-script'
-Dialog = require 'rc-dialog'
+Dialog = require('rc-dialog').default
 url = require 'url'
 
 class Auth extends React.Component

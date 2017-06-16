@@ -1,10 +1,9 @@
-env = require './config.json'
 _ = require 'lodash'
 Auth = require '../index.coffee'
 React = require 'react'
 E = require 'react-script'
 ReactDOM = require 'react-dom'
-{ applyMiddleware, combineReducers, createStore } = require 'redux'
+{ applyMiddleware, combineReducers, compose, createStore } = require 'redux'
 { Provider, connect } = require 'react-redux'
 
 class Login extends React.Component
@@ -40,7 +39,10 @@ class AuthUI extends React.Component
     E 'div', {},
       E Login, _.pick(@props, 'token', 'login')
       E Logout, _.pick(@props, 'token', 'logout')
-      E Auth, env
+      E Auth,
+        AUTHURL: process.env.AUTHURL
+        CLIENT_ID: process.env.CLIENT_ID
+        SCOPE: process.env.SCOPE
       E 'span', style: margin: '.3em', "visible: #{@props.visible}"
       E 'span', style: margin: '.3em', "token: #{@props.token}"
       E 'span', style: margin: '.3em', "error: #{@props.error}"
